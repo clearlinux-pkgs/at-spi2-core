@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.21.1
-Release  : 1
+Release  : 2
 URL      : http://ftp.acc.umu.se/pub/GNOME/sources/at-spi2-core/2.21/at-spi2-core-2.21.1.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/GNOME/sources/at-spi2-core/2.21/at-spi2-core-2.21.1.tar.xz
 Summary  : Accessibility Technology software library
@@ -19,6 +19,7 @@ Requires: at-spi2-core-locales
 BuildRequires : docbook-xml
 BuildRequires : gettext
 BuildRequires : glibc-staticdev
+BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
