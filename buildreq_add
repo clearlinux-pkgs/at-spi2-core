@@ -2,3 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 gobject-introspection
 gobject-introspection-dev
+libSM-dev32

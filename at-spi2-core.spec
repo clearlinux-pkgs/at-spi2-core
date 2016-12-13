@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.21.4
-Release  : 4
+Release  : 5
 URL      : http://ftp.acc.umu.se/pub/GNOME/sources/at-spi2-core/2.21/at-spi2-core-2.21.4.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/GNOME/sources/at-spi2-core/2.21/at-spi2-core-2.21.4.tar.xz
 Summary  : Accessibility Technology software library
@@ -17,15 +17,30 @@ Requires: at-spi2-core-data
 Requires: at-spi2-core-doc
 Requires: at-spi2-core-locales
 BuildRequires : docbook-xml
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
+BuildRequires : gcc-libstdc++32
 BuildRequires : gettext
+BuildRequires : glibc-dev32
+BuildRequires : glibc-libc32
 BuildRequires : glibc-staticdev
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
 BuildRequires : intltool
+BuildRequires : libSM-dev32
 BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
+BuildRequires : pkgconfig(32dbus-1)
+BuildRequires : pkgconfig(32gio-2.0)
+BuildRequires : pkgconfig(32glib-2.0)
+BuildRequires : pkgconfig(32gobject-2.0)
+BuildRequires : pkgconfig(32ice)
+BuildRequires : pkgconfig(32x11)
+BuildRequires : pkgconfig(32xi)
+BuildRequires : pkgconfig(32xt)
+BuildRequires : pkgconfig(32xtst)
 BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(glib-2.0)
@@ -79,6 +94,18 @@ Provides: at-spi2-core-devel
 dev components for the at-spi2-core package.
 
 
+%package dev32
+Summary: dev32 components for the at-spi2-core package.
+Group: Default
+Requires: at-spi2-core-lib32
+Requires: at-spi2-core-bin
+Requires: at-spi2-core-data
+Requires: at-spi2-core-dev
+
+%description dev32
+dev32 components for the at-spi2-core package.
+
+
 %package doc
 Summary: doc components for the at-spi2-core package.
 Group: Documentation
@@ -97,6 +124,16 @@ Requires: at-spi2-core-config
 lib components for the at-spi2-core package.
 
 
+%package lib32
+Summary: lib32 components for the at-spi2-core package.
+Group: Default
+Requires: at-spi2-core-data
+Requires: at-spi2-core-config
+
+%description lib32
+lib32 components for the at-spi2-core package.
+
+
 %package locales
 Summary: locales components for the at-spi2-core package.
 Group: Default
@@ -107,12 +144,23 @@ locales components for the at-spi2-core package.
 
 %prep
 %setup -q -n at-spi2-core-2.21.4
+pushd ..
+cp -a at-spi2-core-2.21.4 build32
+popd
 
 %build
 export LANG=C
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
+pushd ../build32/
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+export CFLAGS="$CFLAGS -m32 "
+export CXXFLAGS="$CXXFLAGS -m32 "
+export LDFLAGS="$LDFLAGS -m32 "
+%configure --disable-static   --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+make V=1  %{?_smp_mflags}
+popd
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
@@ -122,11 +170,21 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
 rm -rf %{buildroot}
+pushd ../build32/
+%make_install32
+if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
+then
+pushd %{buildroot}/usr/lib32/pkgconfig
+for i in *.pc ; do ln -s $i 32$i ; done
+popd
+fi
+popd
 %make_install
 %find_lang at-spi2-core
 
 %files
 %defattr(-,root,root,-)
+/usr/lib32/girepository-1.0/Atspi-2.0.typelib
 
 %files bin
 %defattr(-,root,root,-)
@@ -142,7 +200,6 @@ rm -rf %{buildroot}
 /usr/share/dbus-1/accessibility-services/org.a11y.atspi.Registry.service
 /usr/share/dbus-1/services/org.a11y.Bus.service
 /usr/share/defaults/at-spi2/accessibility.conf
-/usr/share/gir-1.0/Atspi-2.0.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -178,9 +235,16 @@ rm -rf %{buildroot}
 /usr/include/at-spi-2.0/atspi/atspi-types.h
 /usr/include/at-spi-2.0/atspi/atspi-value.h
 /usr/include/at-spi-2.0/atspi/atspi.h
-/usr/lib64/*.so
 /usr/lib64/girepository-1.0/Atspi-2.0.typelib
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libatspi.so
+/usr/lib64/pkgconfig/atspi-2.pc
+/usr/share/gir-1.0/*.gir
+
+%files dev32
+%defattr(-,root,root,-)
+/usr/lib32/libatspi.so
+/usr/lib32/pkgconfig/32atspi-2.pc
+/usr/lib32/pkgconfig/atspi-2.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -228,7 +292,13 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libatspi.so.0
+/usr/lib64/libatspi.so.0.0.1
+
+%files lib32
+%defattr(-,root,root,-)
+/usr/lib32/libatspi.so.0
+/usr/lib32/libatspi.so.0.0.1
 
 %files locales -f at-spi2-core.lang 
 %defattr(-,root,root,-)
