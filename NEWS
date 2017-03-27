@@ -1,3 +1,31 @@
+What's new in at-spi2-core 2.23.92:
+
+* Table cell API fixes (bgo#779835).
+
+What's new in at-spi2-core 2.23.90:
+
+* Fix an occasional crash when an application is closed (bgo#767074).
+
+What's new in at-spi2-core 2.23.4:
+
+* Don't pull in X headers if x11 is disabled (bgo#773710).
+
+* at-spi-bus-launcher: session management fixes (bgo#774441).
+
+
+* events: add recently added page changed event (bgo#719898).
+
+* roles: EXTENDED roles are deprecated (bgo#W720123).
+    
+
+What's new in at-spi2-core 2.2.0:
+
+* at-spi-bus-launcher: fix uninitialized variable.
+
+* Fix return value error in session_manager_connect (bgo#768881).
+
+* Updated translations.
+
 What's new in at-spi2-core 2.21.4:
 
 * Fixed a crash in atspi_accessible_clear_cache.
