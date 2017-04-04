@@ -4,16 +4,16 @@
 #
 Name     : at-spi2-core
 Version  : 2.24.0
-Release  : 6
+Release  : 7
 URL      : https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz
 Summary  : Accessibility Technology software library
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.0
+License  : LGPL-2.0
 Requires: at-spi2-core-config
+Requires: at-spi2-core-data
 Requires: at-spi2-core-lib
 Requires: at-spi2-core-bin
-Requires: at-spi2-core-data
 Requires: at-spi2-core-doc
 Requires: at-spi2-core-locales
 BuildRequires : docbook-xml
@@ -150,7 +150,7 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490629563
+export SOURCE_DATE_EPOCH=1491312950
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -170,7 +170,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1490629563
+export SOURCE_DATE_EPOCH=1491312950
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
@@ -199,9 +199,11 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+/usr/lib64/girepository-1.0/Atspi-2.0.typelib
 /usr/share/dbus-1/accessibility-services/org.a11y.atspi.Registry.service
 /usr/share/dbus-1/services/org.a11y.Bus.service
 /usr/share/defaults/at-spi2/accessibility.conf
+/usr/share/gir-1.0/*.gir
 
 %files dev
 %defattr(-,root,root,-)
@@ -237,10 +239,8 @@ popd
 /usr/include/at-spi-2.0/atspi/atspi-types.h
 /usr/include/at-spi-2.0/atspi/atspi-value.h
 /usr/include/at-spi-2.0/atspi/atspi.h
-/usr/lib64/girepository-1.0/Atspi-2.0.typelib
 /usr/lib64/libatspi.so
 /usr/lib64/pkgconfig/atspi-2.pc
-/usr/share/gir-1.0/*.gir
 
 %files dev32
 %defattr(-,root,root,-)
