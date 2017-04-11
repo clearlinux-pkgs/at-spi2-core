@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.24.0
-Release  : 7
+Release  : 8
 URL      : https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz
 Summary  : Accessibility Technology software library
@@ -150,7 +150,11 @@ popd
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1491312950
+export SOURCE_DATE_EPOCH=1491879484
+export CFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -Os -ffunction-sections -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections -fno-semantic-interposition "
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -170,7 +174,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1491312950
+export SOURCE_DATE_EPOCH=1491879484
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
