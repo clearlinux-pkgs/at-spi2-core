@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.24.0
-Release  : 8
+Release  : 9
 URL      : https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/at-spi2-core/2.24/at-spi2-core-2.24.0.tar.xz
 Summary  : Accessibility Technology software library
