@@ -1,6 +1,52 @@
-What's new in at-spi2-core 2.24.1:
+What's new in at-spi2-core 2.25.92:
 
-* atspi_table_cell_get_position: Don't crash on error.
+* configure.ac: make xkb optional, as intended.
+
+* Optionally read the bus address from the ATSPI_BUS_ADDRESS environment
+  variable (bgo#787126).
+
+What's new in at-spi2-core 2.25.91:
+
+* Meson builds should now be usable.
+
+What's new in at-spi2-core 2.25.90:
+
+* Fix a couple of introspection issues (bgo#784481).
+
+* atspi_get_a11_bus: don't leak the DBusConnection.
+
+* Meson fixes.
+
+What's new in at-spi2-core 2.25.4:
+
+* Fix gir generation with autotools (bgo#783994).
+
+What's new in at-spi2-core 2.25.3:
+
+* Fix -Wmisleading-indentation warnings.
+
+* Fix memory leak of at-spi-bus-launcher.
+
+* Add error-message, error-for, details, and details-for relation types.
+
+* Poll direct dbus connections in the main loop--fixes processes
+  being marked hung and the hung flag never being removed.
+
+* Add Meson build system (thanks to Emmanuele Bassi).
+
+* Various build fixes (thanks to Emmanuele Bassi).
+
+What's new in at-spi2-core 2.25.2:
+
+* attempt to fix an occasional crash when an application disappears
+  (bgo#767074).
+
+* Add some missing roles to correspond with atk (description list,
+  description term, description value, and footnote).
+
+What's new in at-spi2-core 2.25.1:
+
+* atspi_table_cell_get_position: don't crash on error.
 
 What's new in at-spi2-core 2.23.92:
 

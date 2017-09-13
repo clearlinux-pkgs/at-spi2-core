@@ -3,3 +3,4 @@
 gobject-introspection
 gobject-introspection-dev
 libSM-dev32
+kbd
