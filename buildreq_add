@@ -3,4 +3,5 @@
 gobject-introspection
 gobject-introspection-dev
 libSM-dev32
-kbd
+libxkbcommon-dev
+libxkbcommon-dev32

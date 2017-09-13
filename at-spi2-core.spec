@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.26.0
-Release  : 12
+Release  : 13
 URL      : https://download.gnome.org/sources/at-spi2-core/2.26/at-spi2-core-2.26.0.tar.xz
 Source0  : https://download.gnome.org/sources/at-spi2-core/2.26/at-spi2-core-2.26.0.tar.xz
 Summary  : Accessibility Technology software library
@@ -28,8 +28,9 @@ BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
-BuildRequires : kbd
 BuildRequires : libSM-dev32
+BuildRequires : libxkbcommon-dev
+BuildRequires : libxkbcommon-dev32
 BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(32dbus-1)
@@ -154,7 +155,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505315758
+export SOURCE_DATE_EPOCH=1505315997
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -178,7 +179,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1505315758
+export SOURCE_DATE_EPOCH=1505315997
 rm -rf %{buildroot}
 pushd ../build32/
 %make_install32
