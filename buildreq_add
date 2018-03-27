@@ -5,3 +5,5 @@ gobject-introspection-dev
 libSM-dev32
 libxkbcommon-dev
 libxkbcommon-dev32
+glib-dev
+glib-dev32
