@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.28.0
-Release  : 17
+Release  : 18
 URL      : https://download.gnome.org/sources/at-spi2-core/2.28/at-spi2-core-2.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/at-spi2-core/2.28/at-spi2-core-2.28.0.tar.xz
 Summary  : Accessibility Technology software library
