@@ -7,3 +7,4 @@ libxkbcommon-dev
 libxkbcommon-dev32
 glib-dev
 glib-dev32
+dbus-dev32
