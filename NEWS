@@ -1,3 +1,27 @@
+What's new in at-spi2-core 2.31.92:
+
+* Fix atspi_table_cell_get_(row_column)_header_cells.
+
+* Update documentation to indicate that extents are only meaningful
+  when an object has both STATE_VISIBLE and STATE_SHOWING.
+
+* Use a consistent style for the meson options.
+
+* Fix a compiler warning on BSD.
+
+
+* Add ScrollSubstringTo and ScrollSubstringToPoint text interfaces.
+
+What's new in at-spi2-core 2.31.1:
+
+* Bus launcher: fix an issue where the error wasn't cleared on failure.
+
+* Add support for locking/unlocking modifiers.
+
+* Update error log text for consistency.
+
+* Documentation clean-ups.
+
 What's new in at-spi2-core 2.29.1:
 
 * Add dbus-broker support to bus launcher.
