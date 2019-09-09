@@ -1,6 +1,53 @@
-What's new in at-spi2-core 2.32.1:
+What's new in at-spi2-core 2.34.0:
 
-* Fix mesonb uild for meson 0.50.0.
+* Fix a use after free when freeing an event.
+* Clean up handling of the X11 property specifying the bus address (#18).
+* Update doap.
+
+What's new in at-spi2-core 2.33.92:
+
+* Now requires meson 0.50.0.
+* License is now LGPL-2.1+.
+* Meson: only link to libdl when it is necessary.
+* Update installation instructions.
+* Clarify atspi_editable_text_insert_text documentation.
+* Do not warn on no reply from pending get_items call.
+* Eliminate some superfluous runtime warnings.
+
+What's new in at-spi2-core 2.33.90:
+
+* Refactor the API for the screen reader to notify listeners of its status.
+
+* Add a sender to the AtspiEvent struct.
+
+* Add missing atspi_application_get_type prototype.
+
+* Support mutter remote desktop interface for synthesizing keyboard/mouse
+  events (likely still needs work).
+
+What's new in at-spi2-core 2.33.2:
+
+* Check WAYLAND_DISPLAY, rather than XDG_SESSION_TYPE, to avoid X
+  connections. Fixes breakage if X is started with startx and
+  XDG_SESSION_TYPE is unset.
+
+* X11: also try mod4 and mod5 to generate keysyms.
+
+* Add ATSPI_ROLE_CONTENT_DELETION and ATSPI_ROLE_CONTENT_INSERTION.
+
+* Check for dbus-daemon in /usr/lib (for Solaris).
+
+What's new in at-spi2-core 2.33.1:
+
+* Fix meson build for meson 0.50.0.
+
+* Add atspi_accessible_get_accessible_id.
+
+* Add atspi_text_notify_reading_position.
+
+* Check for an actual X11 session before calling X. This will be needed
+  for Mutter in the future because checking $DISPLAY is not sufficient,
+  and xwyland could be automatically started when it isn't wanted.
 
 What's new in at-spi2-core 2.31.92:
 
