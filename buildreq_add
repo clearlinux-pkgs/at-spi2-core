@@ -2,9 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 gobject-introspection
 gobject-introspection-dev
-libSM-dev32
 libxkbcommon-dev
-libxkbcommon-dev32
 glib-dev
-glib-dev32
-dbus-dev32
