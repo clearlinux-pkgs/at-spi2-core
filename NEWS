@@ -1,3 +1,35 @@
+What's new in at-spi2-core 2.39.91:
+
+* Fix a couple of memory leaks.
+
+* Remove const from AtspiDeviceListenerCB prototype (#31).
+
+What's new in at-spi2-core 2.39.90.1:
+
+* Fix a crash introduced in 2.39.90, along with a few warnings (#30).
+
+What's new in at-spi2-core 2.39.90:
+
+* Fix build with X11 disabled.
+
+* Various fixes for the new device API used for key monitoring and grabbing.
+
+* Fixed several memory leaks.
+
+What's new in at-spi2-core 2.39.1:
+
+* Don't use gdbus-broker if not running under systemd (#25).
+
+* Unref bus at the end of cleanup.
+
+* Fix XML interfaces (#26).
+
+* Use unix sockets instead of abstract sockets (#28).
+
+* Added a device API to replace the old API for capturing key
+  grabs. This is needed for toolkits that do not report keystrokes
+  to atk, such as gtk 4.
+
 What's new in at-spi2-core 2.37.92:
 
 * Fix a possible memory leak if an event name cannot be parsed.
