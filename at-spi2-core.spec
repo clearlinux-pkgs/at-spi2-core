@@ -4,7 +4,7 @@
 #
 Name     : at-spi2-core
 Version  : 2.46.0
-Release  : 39
+Release  : 40
 URL      : https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
 Source0  : https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
 Summary  : No detailed summary available
