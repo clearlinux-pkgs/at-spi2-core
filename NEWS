@@ -1,3 +1,53 @@
+What's new in at-spi2-core 2.46.0:
+
+* Fix GetInterfaces documentation on org.a11y.atspi.Accessible
+  interface.
+
+What's new in at-spi2-core 2.45.91:
+
+* Send device event controller events using the same signature as other
+  events.
+
+* Document the Accessible, Action, and Cache dbus interfaces.
+
+* Fix license of atspi-gmain.c (#87).
+
+What's new in at-spi2-core 2.45.90:
+
+* xml: Add some documentation.
+
+* xml: Fix event arguments.
+
+* xml: Add some missing DeviceEventController methods.
+
+* Bind the AT-SPI bus to the graphical session.
+
+* Mark bus service as belonging to the session slice.
+
+* Add ATSPI_ROLE_PUSH_BUTTON_MENU.
+
+* Add an "announcement" event/signal to allow objects to send
+  notifications (!63).
+
+* Various code clean-ups and test improvements.
+
+What's new in at-spi2-core 2.45.1:
+
+* Atk and at-spi2-atk are now merged into this project.
+
+* Now requires meson 0.56.2 and glib 2.67.4.
+
+* at-spi2-atk: Expose the accessible hierarchy via dbus introspection.
+
+* Properly escape the AT-SPI bus address; fixes warnings about the address
+  not containing a colon (!55).
+
+* Add a text value to AtspiValue, so that a value can expose a textual
+  description, as in the new Atk value API.
+
+* Add atspi_event_listener_register_with_app, to allow an event listener
+  to be registered only for a given application (!52).
+
 What's new in at-spi2-core 2.44.1:
 
 * Fix use after free when removing a hung process.
