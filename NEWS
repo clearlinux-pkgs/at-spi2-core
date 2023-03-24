@@ -1,3 +1,37 @@
+What's new in at-spi2-core 2.48.0:
+
+* Add a "atk-only" build option. This allows atk to be built without libdbus
+  installed, but it does not build libatspi or the atk bridge.
+
+* Fix some typos in the documentation.
+
+What's new in at-spi2-core 2.47.90:
+
+* Downgrade meson requirement to 0.63.
+
+*  at-spi-dbus-bus service: set stop timeout to 5s
+    
+* Fix possible crash in screen_reader_signal_watcher.
+
+What's new in at-spi2-core 2.47.1:
+* The meson options -Dx11 and -Dintrospection are now implemented with
+  meson features - https://mesonbuild.com/Build-options.html#features
+
+  Instead of accepting values of "yes/no/auto", they take
+  "enabled/disabled/auto".  Please change your build scripts
+  accordingly if you use these options.
+
+* Use gi-docgen to generate documentation.
+
+* Register key grabs using the focused window, rather than the root window.
+  This should prevent the window from losing focus when a key grab is used.
+
+* atk-adaptor: Handle sockets in GetChildren.
+
+* Improve documentation of the dbus interfaces.
+
+* Various code clean-ups. Some unused code has been removed.
+
 What's new in at-spi2-core 2.46.0:
 
 * Fix GetInterfaces documentation on org.a11y.atspi.Accessible

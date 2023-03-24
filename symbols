@@ -338,7 +338,6 @@ libatk-bridge-2.0.so.0:spi_cache_get_type
 libatk-bridge-2.0.so.0:spi_cache_in
 libatk-bridge-2.0.so.0:spi_dbus_demarshal_deviceEvent
 libatk-bridge-2.0.so.0:spi_dbus_emit_signal
-libatk-bridge-2.0.so.0:spi_dbus_emit_valist
 libatk-bridge-2.0.so.0:spi_dbus_general_error
 libatk-bridge-2.0.so.0:spi_dbus_marshal_deviceEvent
 libatk-bridge-2.0.so.0:spi_dbus_message_iter_append_struct
