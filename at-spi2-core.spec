@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : at-spi2-core
-Version  : 2.48.0
-Release  : 43
-URL      : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.0.tar.xz
-Source0  : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.0.tar.xz
+Version  : 2.48.3
+Release  : 44
+URL      : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
+Source0  : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -95,31 +95,37 @@ locales components for the at-spi2-core package.
 %package services
 Summary: services components for the at-spi2-core package.
 Group: Systemd services
+Requires: systemd
 
 %description services
 services components for the at-spi2-core package.
 
 
 %prep
-%setup -q -n at-spi2-core-2.48.0
-cd %{_builddir}/at-spi2-core-2.48.0
+%setup -q -n at-spi2-core-2.48.3
+cd %{_builddir}/at-spi2-core-2.48.3
+pushd ..
+cp -a at-spi2-core-2.48.3 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680018274
+export SOURCE_DATE_EPOCH=1685461799
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %check
 export LANG=C.UTF-8
@@ -131,8 +137,10 @@ meson test -C builddir --print-errorlogs || :
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/at-spi2-core
 cp %{_builddir}/at-spi2-core-%{version}/COPYING %{buildroot}/usr/share/package-licenses/at-spi2-core/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang at-spi2-core
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -149,6 +157,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libatk-1.0.so
+/V3/usr/lib64/libatk-bridge-2.0.so
+/V3/usr/lib64/libatspi.so
 /usr/include/at-spi-2.0/atspi/atspi-accessible.h
 /usr/include/at-spi-2.0/atspi/atspi-action.h
 /usr/include/at-spi-2.0/atspi/atspi-application.h
@@ -225,9 +236,16 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/gtk-2.0/modules/libatk-bridge.so
+/V3/usr/lib64/libatk-1.0.so.0
+/V3/usr/lib64/libatk-1.0.so.0.24812.1
+/V3/usr/lib64/libatk-bridge-2.0.so.0
+/V3/usr/lib64/libatk-bridge-2.0.so.0.0.0
+/V3/usr/lib64/libatspi.so.0
+/V3/usr/lib64/libatspi.so.0.0.1
 /usr/lib64/gtk-2.0/modules/libatk-bridge.so
 /usr/lib64/libatk-1.0.so.0
-/usr/lib64/libatk-1.0.so.0.24809.1
+/usr/lib64/libatk-1.0.so.0.24812.1
 /usr/lib64/libatk-bridge-2.0.so.0
 /usr/lib64/libatk-bridge-2.0.so.0.0.0
 /usr/lib64/libatspi.so.0
@@ -235,6 +253,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files libexec
 %defattr(-,root,root,-)
+/V3/usr/libexec/at-spi-bus-launcher
+/V3/usr/libexec/at-spi2-registryd
 /usr/libexec/at-spi-bus-launcher
 /usr/libexec/at-spi2-registryd
 
