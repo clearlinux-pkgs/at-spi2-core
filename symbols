@@ -419,6 +419,7 @@ libatspi.so.0:_atspi_error_quark
 libatspi.so.0:_atspi_get_iface_num
 libatspi.so.0:_atspi_get_live_refs
 libatspi.so.0:_atspi_hyperlink_new
+libatspi.so.0:_atspi_key_is_on_keypad
 libatspi.so.0:_atspi_match_rule_marshal
 libatspi.so.0:_atspi_mutter_generate_keyboard_event
 libatspi.so.0:_atspi_mutter_generate_mouse_event
@@ -600,6 +601,7 @@ libatspi.so.0:atspi_get_a11y_bus
 libatspi.so.0:atspi_get_desktop
 libatspi.so.0:atspi_get_desktop_count
 libatspi.so.0:atspi_get_desktop_list
+libatspi.so.0:atspi_get_version
 libatspi.so.0:atspi_hyperlink_get_end_index
 libatspi.so.0:atspi_hyperlink_get_index_range
 libatspi.so.0:atspi_hyperlink_get_n_anchors

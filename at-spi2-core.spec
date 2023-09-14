@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : at-spi2-core
-Version  : 2.48.3
-Release  : 45
-URL      : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
-Source0  : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.3.tar.xz
+Version  : 2.48.4
+Release  : 46
+URL      : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.4.tar.xz
+Source0  : https://download.gnome.org/sources/at-spi2-core/2.48/at-spi2-core-2.48.4.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -102,10 +102,10 @@ services components for the at-spi2-core package.
 
 
 %prep
-%setup -q -n at-spi2-core-2.48.3
-cd %{_builddir}/at-spi2-core-2.48.3
+%setup -q -n at-spi2-core-2.48.4
+cd %{_builddir}/at-spi2-core-2.48.4
 pushd ..
-cp -a at-spi2-core-2.48.3 buildavx2
+cp -a at-spi2-core-2.48.4 buildavx2
 popd
 
 %build
@@ -113,7 +113,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685480536
+export SOURCE_DATE_EPOCH=1694732092
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -187,6 +187,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/at-spi-2.0/atspi/atspi-text.h
 /usr/include/at-spi-2.0/atspi/atspi-types.h
 /usr/include/at-spi-2.0/atspi/atspi-value.h
+/usr/include/at-spi-2.0/atspi/atspi-version.h
 /usr/include/at-spi-2.0/atspi/atspi.h
 /usr/include/at-spi2-atk/2.0/atk-bridge.h
 /usr/include/atk-1.0/atk/atk-autocleanups.h
@@ -234,12 +235,12 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/gtk-2.0/modules/libatk-bridge.so
-/V3/usr/lib64/libatk-1.0.so.0.24812.1
+/V3/usr/lib64/libatk-1.0.so.0.24813.1
 /V3/usr/lib64/libatk-bridge-2.0.so.0.0.0
 /V3/usr/lib64/libatspi.so.0.0.1
 /usr/lib64/gtk-2.0/modules/libatk-bridge.so
 /usr/lib64/libatk-1.0.so.0
-/usr/lib64/libatk-1.0.so.0.24812.1
+/usr/lib64/libatk-1.0.so.0.24813.1
 /usr/lib64/libatk-bridge-2.0.so.0
 /usr/lib64/libatk-bridge-2.0.so.0.0.0
 /usr/lib64/libatspi.so.0
