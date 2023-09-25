@@ -87,6 +87,7 @@ libatk-1.0.so.0:atk_implementor_get_type
 libatk-1.0.so.0:atk_implementor_ref_accessible
 libatk-1.0.so.0:atk_key_event_type_get_type
 libatk-1.0.so.0:atk_layer_get_type
+libatk-1.0.so.0:atk_live_get_type
 libatk-1.0.so.0:atk_misc_get_instance
 libatk-1.0.so.0:atk_misc_get_type
 libatk-1.0.so.0:atk_misc_threads_enter
@@ -399,7 +400,6 @@ libatspi.so.0:_atspi_bus
 libatspi.so.0:_atspi_dbus_attribute_array_from_iter
 libatspi.so.0:_atspi_dbus_call
 libatspi.so.0:_atspi_dbus_call_partial
-libatspi.so.0:_atspi_dbus_call_partial_va
 libatspi.so.0:_atspi_dbus_consume_accessible
 libatspi.so.0:_atspi_dbus_get_property
 libatspi.so.0:_atspi_dbus_handle_DeviceEvent
@@ -421,9 +421,6 @@ libatspi.so.0:_atspi_get_live_refs
 libatspi.so.0:_atspi_hyperlink_new
 libatspi.so.0:_atspi_key_is_on_keypad
 libatspi.so.0:_atspi_match_rule_marshal
-libatspi.so.0:_atspi_mutter_generate_keyboard_event
-libatspi.so.0:_atspi_mutter_generate_mouse_event
-libatspi.so.0:_atspi_mutter_set_reference_window
 libatspi.so.0:_atspi_name_compat
 libatspi.so.0:_atspi_prepare_screen_reader_interface
 libatspi.so.0:_atspi_ref_accessible
@@ -434,6 +431,7 @@ libatspi.so.0:_atspi_send_event
 libatspi.so.0:_atspi_state_set_new_internal
 libatspi.so.0:_atspi_strdup_and_adjust_for_dbus
 libatspi.so.0:atspi_accessible_clear_cache
+libatspi.so.0:atspi_accessible_clear_cache_single
 libatspi.so.0:atspi_accessible_get_accessible_id
 libatspi.so.0:atspi_accessible_get_action
 libatspi.so.0:atspi_accessible_get_action_iface
@@ -597,6 +595,7 @@ libatspi.so.0:atspi_event_type_get_type
 libatspi.so.0:atspi_exit
 libatspi.so.0:atspi_generate_keyboard_event
 libatspi.so.0:atspi_generate_mouse_event
+libatspi.so.0:atspi_generate_mouse_event_async
 libatspi.so.0:atspi_get_a11y_bus
 libatspi.so.0:atspi_get_desktop
 libatspi.so.0:atspi_get_desktop_count
@@ -628,6 +627,7 @@ libatspi.so.0:atspi_key_definition_get_type
 libatspi.so.0:atspi_key_event_type_get_type
 libatspi.so.0:atspi_key_listener_sync_type_get_type
 libatspi.so.0:atspi_key_synth_type_get_type
+libatspi.so.0:atspi_live_get_type
 libatspi.so.0:atspi_locale_type_get_type
 libatspi.so.0:atspi_marshal_VOID__INT_INT
 libatspi.so.0:atspi_marshal_VOID__INT_STRING
@@ -649,6 +649,7 @@ libatspi.so.0:atspi_relation_get_relation_type
 libatspi.so.0:atspi_relation_get_target
 libatspi.so.0:atspi_relation_get_type
 libatspi.so.0:atspi_relation_type_get_type
+libatspi.so.0:atspi_role_get_localized_name
 libatspi.so.0:atspi_role_get_name
 libatspi.so.0:atspi_role_get_type
 libatspi.so.0:atspi_scroll_type_get_type
@@ -756,11 +757,11 @@ libatspi.so.0:dbind_any_free
 libatspi.so.0:dbind_any_free_ptr
 libatspi.so.0:dbind_any_marshal
 libatspi.so.0:dbind_any_marshal_va
-libatspi.so.0:dbind_emit_signal
-libatspi.so.0:dbind_emit_signal_va
 libatspi.so.0:dbind_find_c_alignment
+libatspi.so.0:dbind_method_call
 libatspi.so.0:dbind_method_call_reentrant
 libatspi.so.0:dbind_method_call_reentrant_va
+libatspi.so.0:dbind_method_call_va
 libatspi.so.0:dbind_send_and_allow_reentry
 libatspi.so.0:dbind_set_timeout
 libatspi.so.0:free_value
