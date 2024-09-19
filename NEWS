@@ -1,3 +1,40 @@
+What's new in at-spi2-core 2.53.90:
+
+* Make ATSPI_ROLE_PUSH_BUTTON an enum value again.
+
+* atk: Align button role with AT-SPI one.
+
+* Fix warning when atspi_event_quit is called multiple times.
+
+What's new in at-spi2-core 2.53.1:
+
+* tests: Clean up test application on SIGABRT/SIGSEGV.
+
+* Set (allow-none) for nullable parameters to atspi_match_rule_new.
+
+* collection: Allow specifying specific action names in match rules.
+
+    atk-adaptor: Fix duplicated results in GetMatchesFrom.
+
+* atk-adaptor: For collections, don't return objects with 0 actions as
+  supporting AtkAction.
+
+* Rename ATSPI_ROLE_PUSH_BUTTON to ATSPI_ROLE_BUTTON.
+
+What's new in at-spi2-core 2.53.0:
+
+    Add missing prototypes for functions to check the presence of interfaces.
+
+* Replace disable_p2p with an ATSPI_DISABLE_P2P environment variable.
+
+* Drop use of deprecated eaves-dropping option in dbus configuration
+
+    atk-adaptor: Limit amount of children to return for GetChildren
+
+* Notify about HelpText attribute change.
+
+* Fix possible double unref in add_accessible_from_iter.
+
 What's new in at-spi2-core 2.52.0:
 
 * tests: Fix missing declaration for getpid().

@@ -1,0 +1,9 @@
+/etc/:
+/etc/xdg/Xwayland-session.d:
+/etc/xdg/autostart:
+/etc/xdg:
+00-at-spi
+Xwayland-session.d
+at-spi-dbus-bus.desktop
+autostart
+xdg
