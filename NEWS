@@ -1,8 +1,34 @@
-What's new in at-spi2-core 2.54.1:
+What's new in at-spi2-core 2.56.0:
+
+* Updated translations.
+
+What's new in at-spi2-core 2.55.90:
+
+* Support grabbing keyboard shortcuts through the new
+  org.freedesktop.a11y.KeyboardMonitor interface. This allows key grabs to
+  be supported under Wayland with the latest mutter.
+
+What's new in at-spi2-core 2.55.2:
+
+* Attempt to fix a use after free in the atk bridge.
+
+* Add a switch role.
+
+What's new in at-spi2-core 2.55.0.1:
+
+* Fix regression in 2.55.0 where ungrabbing keys did not work reliably.
+
+What's new in at-spi2-core 2.55.0:
 
 * Fix various memory leaks.
 
 * Fix the build on FreeBSD.
+
+* Improve warnings when setting a property.
+
+* Use the appropriate annotations for callbacks.
+
+* device: Support adding grabs given a keysym.
 
 What's new in at-spi2-core 2.53.90:
 
